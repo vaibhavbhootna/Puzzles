@@ -44,7 +44,7 @@ public class FindTheWinner {
 				}
 			}
 		}
-		System.out.println(adreaPoints + " "+ mariaPoints);
+		
 		if (adreaPoints > mariaPoints)
 			return "Andrea";
 		else
