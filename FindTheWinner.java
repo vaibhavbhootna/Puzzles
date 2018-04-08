@@ -14,8 +14,9 @@ public class FindTheWinner {
 		for (int i = 0; i < input; i++) {
 			andrea[i] = Integer.parseInt(scanner.nextLine());
 		}
-
-		for (int i = 0; i < input; i++) {
+		
+		int input1 = Integer.parseInt(scanner.nextLine());
+		for (int i = 0; i < input1; i++) {
 			maria[i] = Integer.parseInt(scanner.nextLine());
 		}
 
@@ -28,21 +29,22 @@ public class FindTheWinner {
 		int adreaPoints = 0;
 		int mariaPoints = 0;
 
-		if ("EVEN".equals(s)) {
-			for (int i = 0; i <= andrea.length; i++) {
+		if ("EVEN".equalsIgnoreCase(s)) {
+			for (int i = 0; i < andrea.length; i++) {
 				if (i % 2 == 0) {
 					adreaPoints += andrea[i] - maria[i];
 					mariaPoints += maria[i] - andrea[i];
 				}
 			}
-		} else if ("ODD".equals(s)) {
-			for (int i = 0; i <= andrea.length; i++) {
+		} else if ("ODD".equalsIgnoreCase(s)) {
+			for (int i = 0; i < andrea.length; i++) {
 				if (i % 2 == 1) {
 					adreaPoints += andrea[i] - maria[i];
 					mariaPoints += maria[i] - andrea[i];
 				}
 			}
 		}
+		
 		if (adreaPoints > mariaPoints)
 			return "Andrea";
 		else
