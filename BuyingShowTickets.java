@@ -1,5 +1,6 @@
 package main;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class BuyingShowTickets {
@@ -18,20 +19,30 @@ public class BuyingShowTickets {
 		System.out.println("Wait : " + waitingTime(tickets, pos));
 	}
 
-	static long waitingTime(int[] tickets, int p) {
-		int wait = 0;
-		int i = 0;
-		while (tickets[p] != 0) {
-			if (tickets[i] > 0) {
-				tickets[i] = tickets[i] - 1;
-				wait++;
-			}
-			i++;
-			if (i == tickets.length) {
-				i = 0;
+	/*
+	 * static long waitingTime(int[] tickets, int p) { int wait = 0; int i = 0;
+	 * while (tickets[p] != 0) { if (tickets[i] > 0) { tickets[i] = tickets[i] - 1;
+	 * wait++; } i++; if (i == tickets.length) { i = 0; } } return wait; }
+	 */
+
+	public static long waitingTime(int[] tickets, int p) {
+		long waitTime = 0;
+		int[] copyOfTkt = Arrays.copyOf(tickets, tickets.length);
+		for (int i = 0; i < tickets.length; i++) {
+			copyOfTkt[i] = tickets[i] - tickets[p];
+		}
+		for (int i = 0; i < tickets.length; i++) {
+			if (copyOfTkt[i] < 0) {
+				waitTime += tickets[i];
+			} else {
+				if (i <= p) {
+					waitTime += tickets[p];
+				} else {
+					waitTime += tickets[p] - 1;
+				}
 			}
 		}
-		return wait;
+		return waitTime;
 	}
 
 }
