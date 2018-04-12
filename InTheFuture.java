@@ -15,7 +15,7 @@ public class InTheFuture {
 	}
 
 	static int minNum(int a, int k, int p) {
-		if (k < a) {
+		if (k <= a) {
 			return -1;
 		} else {
 			return (k - a + p)/(k-a);
